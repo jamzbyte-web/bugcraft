@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bugcraft</title>
+  <link rel="stylesheet" href="bugcraft.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="bclogo.png">
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.keyCode === 123 ||
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67)) || 
+        (e.ctrlKey && e.keyCode === 85) ||
+        (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '='))
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    function copyText(text, messageId) {
+      navigator.clipboard.writeText(text).then(function() {
+        const msg = document.getElementById(messageId);
+        msg.textContent = 'Copied!';
+        setTimeout(() => msg.textContent = '', 1500);
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">BUGCRAFT</h1>
+
+    <div class="info-box" onclick="copyText('ph.bugcraft.online', 'phMessage')">
+      <div class="info-text">Philippine Server</div>
+      <div id="phMessage" class="message"></div>
+    </div>
+    
+    <div class="info-box" onclick="copyText('sg.bugcraft.online', 'sgMessage')">
+      <div class="info-text">Singapore Server</div>
+      <div id="sgMessage" class="message"></div>
+    </div>
+
+    <div class="info-box" onclick="copyText('hk.bugcraft.online', 'hkMessage')">
+      <div class="info-text">Hong Kong Server</div>
+      <div id="hkMessage" class="message"></div>
+    </div>    
+
+  </div>
+</body>
+</html>
+
